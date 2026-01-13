@@ -15,3 +15,12 @@ type Job struct {
 	Status Status
 	Tries  int
 }
+
+func NewJob(jobType string) Job {
+	return Job{
+		ID:     NewID(),
+		Type:   jobType,
+		Status: StatusPending,
+		Tries:  0,
+	}
+}
