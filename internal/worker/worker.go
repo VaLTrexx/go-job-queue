@@ -5,11 +5,13 @@ import (
 	"time"
 
 	"github.com/VaLTrexx/go-job-queue/internal/queue"
+	"github.com/VaLTrexx/go-job-queue/internal/store"
 )
 
 type Worker struct {
 	ID    int
 	Queue *queue.Queue
+	Store *store.JobStore
 }
 
 func (w *Worker) Start() {
