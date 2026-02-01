@@ -16,6 +16,14 @@ func New() *Queue {
 		jobs: make([]job.Job, 0),
 	}
 }
+
+func (q *Queue) Enqueue(j job.Job) {
+	q.mu.Lock()
+	defer q.mu.Unlock()
+
+	q.jobs = append(q.jobs, j)
+}
+
 func (q *Queue) Dequeue() (job.Job, bool) {
 	q.mu.Lock()
 	defer q.mu.Unlock()
