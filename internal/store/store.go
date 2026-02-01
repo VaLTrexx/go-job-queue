@@ -29,3 +29,14 @@ func (s *JobStore) Get(id string) (job.Job, bool) {
 	j, ok := s.jobs[id]
 	return j, ok
 }
+
+func (s *JobStore) All() []job.Job {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	result := make([]job.Job, 0, len(s.jobs))
+	for _, j := range s.jobs {
+		result = append(result, j)
+	}
+	return result
+}
