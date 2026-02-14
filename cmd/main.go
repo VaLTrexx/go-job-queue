@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/VaLTrexx/go-job-queue/internal/job"
-	"github.com/VaLTrexx/go-job-queue/internal/queue"
+	"github.com/VaLTrexx/go-job-queue/internal/redis"
 	"github.com/VaLTrexx/go-job-queue/internal/store"
 	"github.com/VaLTrexx/go-job-queue/internal/worker"
 )
@@ -14,7 +14,13 @@ import (
 func main() {
 	rand.Seed(time.Now().UnixNano())
 
-	q := queue.New()
+	client := redis.NewClient()
+	if err := redis.Ping(client); err != nil {
+		panic(err)
+	}
+
+	q := redis.NewRedisQueue(client, "job_queue")
+
 	s := store.New()
 
 	for i := 0; i < 5; i++ {
@@ -32,7 +38,13 @@ func main() {
 	time.Sleep(15 * time.Second)
 
 	fmt.Println("\nFinal job states:")
-	for _, j := range s.All() {
+
+	jobs, err := s.All()
+	if err != nil {
+		panic(err)
+	}
+
+	for _, j := range jobs {
 		fmt.Printf("Job %s -> %s (tries: %d)\n", j.ID, j.Status, j.Tries)
 	}
 }

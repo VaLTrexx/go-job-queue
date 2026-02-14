@@ -5,20 +5,25 @@ import (
 	"math/rand"
 	"time"
 
+	"github.com/VaLTrexx/go-job-queue/internal/core"
 	"github.com/VaLTrexx/go-job-queue/internal/job"
-	"github.com/VaLTrexx/go-job-queue/internal/queue"
-	"github.com/VaLTrexx/go-job-queue/internal/store"
 )
 
 type Worker struct {
 	ID    int
-	Queue *queue.Queue
-	Store *store.JobStore
+	Queue core.Queue
+	Store core.Store
 }
 
 func (w *Worker) Start() {
 	for {
-		j, ok := w.Queue.Dequeue()
+
+		j, ok, err := w.Queue.Dequeue()
+		if err != nil {
+			fmt.Println("queue error:", err)
+			time.Sleep(1 * time.Second)
+			continue
+		}
 		if !ok {
 			time.Sleep(1 * time.Second)
 			continue

@@ -17,20 +17,21 @@ func New() *JobStore {
 	}
 }
 
-func (s *JobStore) Save(j job.Job) {
+func (s *JobStore) Save(j job.Job) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	s.jobs[j.ID] = j
+	return nil
 }
 
-func (s *JobStore) Get(id string) (job.Job, bool) {
+func (s *JobStore) Get(id string) (job.Job, bool, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	j, ok := s.jobs[id]
-	return j, ok
+	return j, ok, nil
 }
 
-func (s *JobStore) All() []job.Job {
+func (s *JobStore) All() ([]job.Job, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
@@ -38,5 +39,5 @@ func (s *JobStore) All() []job.Job {
 	for _, j := range s.jobs {
 		result = append(result, j)
 	}
-	return result
+	return result, nil
 }
