@@ -13,6 +13,8 @@ Fault tolerance and reliability
 Asynchronous job processing  
 Clean Go-idiomatic codebase  
 Easy to integrate into other Go projects
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/e10c8db5-1e62-4aee-b492-0bbb4a6a8e75" />
+
 
 *(More advanced features like retries, scheduling, etc. will be added in future versions)*
 
