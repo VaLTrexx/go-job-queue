@@ -5,13 +5,13 @@ A lightweight, Redis-backed asynchronous job queue built in Go to handle backgro
 This project demonstrates producer-consumer architecture, worker pools using goroutines, retry mechanisms, and clean modular design for scalable backend systems.
 
 # Key Features
-Asynchronous background job processing
-Redis-backed persistent queue
-Concurrent worker pool using goroutines
-Configurable worker count
-Retry mechanism for failed jobs
-Clean modular architecture
-Extensible task types
+Asynchronous background job processing.
+Redis-backed persistent queue.
+Concurrent worker pool using goroutines.
+Configurable worker count.
+Retry mechanism for failed jobs.
+Clean modular architecture.
+Extensible task types.
 
 # High Level Overview
 ![alt text](image.png)
