@@ -1,27 +1,5 @@
 # Go Job Queue
 
-<<<<<<< HEAD
-**A fault-tolerant background job queue system built in Go**
-
-This project implements a scalable, reliable job queue system in Go that allows asynchronous background processing of tasks.  
-It’s designed to help Go applications process jobs efficiently and recover from failures gracefully.
-
----
-
-##  Features
-
-Fault tolerance and reliability  
-Asynchronous job processing  
-Clean Go-idiomatic codebase  
-Easy to integrate into other Go projects
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/e10c8db5-1e62-4aee-b492-0bbb4a6a8e75" />
-
-
-*(More advanced features like retries, scheduling, etc. will be added in future versions)*
-
-
-##  Getting Started
-=======
 A lightweight, Redis-backed asynchronous job queue built in Go to handle background task processing reliably and concurrently.
 
 This project demonstrates producer-consumer architecture, worker pools using goroutines, retry mechanisms, and clean modular design for scalable backend systems.
@@ -39,6 +17,7 @@ Extensible task types
 ![alt text](image.png)
 
 # Component Responsibilities
+
 Client / API
 
 Accepts incoming requests and creates job payloads.
@@ -76,18 +55,15 @@ Moves permanently failing jobs to a dead-letter queue.
 
 
 ##  To Get Started
->>>>>>> c1fc2c9 (Structure and Component Explanation)
 
 **Prerequisites**
 
 You need Go (1.18+) installed on your system.
+Redis installed
 
 Clone the repository:
+git clone https://github.com/ValTrexx/go-job-queue.git
+cd go-job-queue
 
-```bash
-git clone https://github.com/VaLTrexx/go-job-queue.git
-<<<<<<< HEAD
-cd go-job-queue
-=======
-cd go-job-queue
->>>>>>> c1fc2c9 (Structure and Component Explanation)
+
+
